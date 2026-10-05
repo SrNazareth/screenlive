@@ -1,0 +1,14 @@
+{
+  "name": "screenlive-internet",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ScreenLive - compartilhamento de tela via WebRTC",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1"
+  }
+}

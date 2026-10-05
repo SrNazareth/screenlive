@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScreenLive</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="app">
+    <section id="home" class="page">
+      <h1>ScreenLive</h1>
+      <p>Compartilhe sua tela pela internet.</p>
+      <div class="home-actions">
+        <button id="createBtn">Criar transmissão</button>
+        <div class="join">
+          <input id="roomInput" placeholder="Código da sala">
+          <button id="joinBtn">Entrar</button>
+        </div>
+      </div>
+      <p id="homeError" class="error"></p>
+    </section>
+
+    <section id="broadcast" class="page hidden">
+      <div class="topbar">
+        <strong>Transmitindo</strong>
+        <button id="copyBtn" class="secondary">Copiar link</button>
+        <button id="stopBtn" class="danger">Encerrar</button>
+      </div>
+
+      <div class="layout">
+        <div class="video-wrap">
+          <video id="localVideo" autoplay muted playsinline></video>
+          <div id="status" class="status">Preparando...</div>
+        </div>
+
+        <aside class="settings">
+          <h2>Configurações</h2>
+          <label>Qualidade
+            <select id="quality">
+              <option value="360">360p</option>
+              <option value="480">480p</option>
+              <option value="720" selected>720p</option>
+              <option value="1080">1080p</option>
+            </select>
+          </label>
+          <label>FPS
+            <select id="fps">
+              <option value="24">24 FPS</option>
+              <option value="30" selected>30 FPS</option>
+              <option value="60">60 FPS</option>
+            </select>
+          </label>
+          <label>Bitrate
+            <select id="bitrate">
+              <option value="auto" selected>Automático</option>
+              <option value="1500">1.5 Mbps</option>
+              <option value="3000">3 Mbps</option>
+              <option value="5000">5 Mbps</option>
+              <option value="8000">8 Mbps</option>
+            </select>
+          </label>
+          <label class="check"><input id="audio" type="checkbox" checked> Áudio da tela</label>
+          <small>As configurações são aplicadas ao iniciar a captura. O navegador pode limitar alguns valores.</small>
+          <div class="sharebox">
+            <span>Link da transmissão</span>
+            <input id="shareLink" readonly>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="watch" class="page hidden">
+      <div class="topbar">
+        <strong>ScreenLive</strong>
+        <span id="watchStatus">Conectando...</span>
+      </div>
+      <div class="viewer">
+        <video id="remoteVideo" autoplay playsinline controls></video>
+        <div id="watchPlaceholder">Aguardando transmissão...</div>
+      </div>
+      <p id="watchError" class="error"></p>
+    </section>
+  </main>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
